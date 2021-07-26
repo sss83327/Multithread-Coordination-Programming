@@ -2,12 +2,11 @@
 #include <fstream>
 #include <iomanip>
 #include <cstdlib>
-#include <unistd.h>
 #include <stdio.h>
 #include <pthread.h>
 #include <stdlib.h>
 #include <time.h>
-#include <sys/time.h>
+#include <time.h>
 #include <semaphore.h>
 using namespace std;
 
@@ -116,6 +115,8 @@ void *dispatcher(void *data)
 		signal(mutex);
 		
 	}while(robot<40);
+
+	return 0;
 }
 
 void *producer_battery(void *data)
@@ -135,6 +136,8 @@ void *producer_battery(void *data)
 		signal(mutex);
 		
 	}while(robot < 40);
+
+	return 0;
 }
 
 void *producer_sensor(void *data)
@@ -156,6 +159,8 @@ void *producer_sensor(void *data)
 		signal(mutex);
 		
 	}while(robot < 40);
+	
+	return 0;
 }
 
 void *producer_wifi(void *data)
@@ -177,6 +182,8 @@ void *producer_wifi(void *data)
 		signal(mutex);
 		
 	}while(robot < 40);
+
+	return 0;
 }
 
 void *producer_crawler(void *data)
@@ -198,6 +205,8 @@ void *producer_crawler(void *data)
 		signal(mutex);
 		
 	}while(robot < 40);
+
+	return 0;
 }
 
 
@@ -210,7 +219,7 @@ int main()
 	mutex = 1;
 	robot=0;
 	dispatch=0;
-	srand (time(NULL));
+	//srand (time(NULL));
 	pthread_t p1, p2, p3, p4, d;
 	
 	pthread_create( &d, NULL, dispatcher, NULL );	
